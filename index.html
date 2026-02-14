@@ -3,224 +3,179 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Tú mi 14 de febrero</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 body{
-margin:0;
-background:#000;
-font-family:'Nunito',sans-serif;
-color:white;
-overflow:hidden;
-text-align:center;
+  margin:0;
+  overflow:hidden;
+  background: radial-gradient(circle at center, #0b0b1a 0%, #000 70%);
+  font-family:'Quicksand', sans-serif;
+  color:#fff;
+  text-align:center;
 }
 
-/* FONDO ESPACIO */
-.stars{
-position:fixed;
-width:100%;
-height:100%;
-background:radial-gradient(circle at center, #02020a, #000);
-z-index:0;
+/* título */
+h1{
+  position:absolute;
+  top:20px;
+  width:100%;
+  font-size:24px;
+  color:#ffd1ec;
+  text-shadow:0 0 10px #ff7ac8;
 }
 
-.star{
-position:absolute;
-width:2px;
-height:2px;
-background:white;
-border-radius:50%;
-opacity:.8;
-animation:twinkle 2s infinite ease-in-out;
+/* contenedor central */
+.center{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
 }
 
-@keyframes twinkle{
-0%,100%{opacity:.2;}
-50%{opacity:1;}
-}
-
-/* TEXTO */
-.texto{
-position:absolute;
-top:25px;
-width:100%;
-padding:0 20px;
-font-size:22px;
-color:#ffd1f0;
-line-height:1.6;
-font-family:'Pacifico',cursive;
-text-shadow:0 0 12px rgba(255,182,193,.6);
-z-index:2;
-}
-
-/* BOTÓN MÚSICA */
-.musicBtn{
-position:absolute;
-top:140px;
-left:50%;
-transform:translateX(-50%);
-background:linear-gradient(45deg,#ff8fc7,#ff4fa3);
-border:none;
-padding:12px 25px;
-border-radius:25px;
-color:white;
-font-size:16px;
-cursor:pointer;
-box-shadow:0 0 15px rgba(255,105,180,.6);
-z-index:3;
-}
-
-/* CORAZÓN */
+/* corazón */
 .heart{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:270px;
-height:250px;
-background:radial-gradient(circle at 50% 40%, #ff8fc7, #ff4fa3);
-clip-path:path("M135 240 C25 155 5 85 70 45 C105 25 135 45 135 75 C135 45 165 25 200 45 C265 85 245 155 135 240 Z");
-box-shadow:0 0 60px rgba(255,105,180,.9);
-animation:latido 1.6s infinite;
-overflow:hidden;
-z-index:2;
+  width:220px;
+  height:200px;
+  position:relative;
+  transform:rotate(-45deg);
+  background:#ff4da6;
+  box-shadow:0 0 40px #ff4da6;
 }
 
+.heart:before,
+.heart:after{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:200px;
+  background:#ff4da6;
+  border-radius:50%;
+}
+
+.heart:before{ top:-110px; left:0; }
+.heart:after{ left:110px; top:0; }
+
+/* imagen dentro del corazón */
 .heart img{
-width:100%;
-height:100%;
-object-fit:cover;
-mix-blend-mode:screen;
-opacity:.9;
+  position:absolute;
+  width:150px;
+  height:150px;
+  object-fit:cover;
+  border-radius:50%;
+  top:25px;
+  left:35px;
+  transform:rotate(45deg);
+  filter:brightness(1.1) contrast(1.1);
 }
 
-@keyframes latido{
-0%,100%{transform:translate(-50%,-50%) scale(1);}
-50%{transform:translate(-50%,-50%) scale(1.1);}
+/* órbitas */
+.orbit{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform-style:preserve-3d;
 }
 
-/* ÓRBITA */
-.orbita{
-position:absolute;
-top:50%;
-left:50%;
-width:340px;
-height:340px;
-margin:-170px 0 0 -170px;
-animation:rotar 25s linear infinite;
-z-index:1;
+.photo{
+  position:absolute;
+  width:90px;
+  height:90px;
+  border-radius:15px;
+  object-fit:cover;
+  box-shadow:0 0 15px #ff7ac8;
 }
 
-.orbita img{
-position:absolute;
-width:70px;
-height:70px;
-border-radius:14px;
-object-fit:cover;
-box-shadow:0 0 15px rgba(255,182,193,.4);
-cursor:pointer;
+/* animaciones */
+@keyframes spin{
+  from{ transform:rotate(0deg) translateX(260px) rotate(0deg); }
+  to{ transform:rotate(360deg) translateX(260px) rotate(-360deg); }
 }
 
-@keyframes rotar{
-from{transform:rotate(0deg);}
-to{transform:rotate(360deg);}
+.orbit img:nth-child(1){ animation:spin 20s linear infinite; }
+.orbit img:nth-child(2){ animation:spin 25s linear infinite reverse; }
+.orbit img:nth-child(3){ animation:spin 30s linear infinite; }
+.orbit img:nth-child(4){ animation:spin 35s linear infinite reverse; }
+.orbit img:nth-child(5){ animation:spin 40s linear infinite; }
+.orbit img:nth-child(6){ animation:spin 45s linear infinite reverse; }
+.orbit img:nth-child(7){ animation:spin 50s linear infinite; }
+
+/* botón mensaje */
+#btn{
+  position:absolute;
+  bottom:40px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#ff7ac8;
+  border:none;
+  padding:12px 22px;
+  border-radius:25px;
+  color:white;
+  font-size:16px;
+  box-shadow:0 0 15px #ff7ac8;
 }
 
-.p1{top:0; left:50%;}
-.p2{top:20%; left:85%;}
-.p3{top:70%; left:90%;}
-.p4{top:100%; left:50%;}
-.p5{top:70%; left:5%;}
-.p6{top:20%; left:0%;}
-.p7{top:40%; left:95%;}
-
-/* VISOR */
-.viewer{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.92);
-display:none;
-justify-content:center;
-align-items:center;
-z-index:10;
+/* mensaje secreto */
+#mensaje{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:30px;
+  font-size:16px;
+  line-height:1.5;
+  animation:fadeIn 1s ease;
 }
 
-.viewer img{
-max-width:90%;
-max-height:80%;
-border-radius:20px;
-box-shadow:0 0 25px rgba(255,182,193,.6);
+@keyframes fadeIn{
+  from{opacity:0; transform:scale(.9);}
+  to{opacity:1; transform:scale(1);}
 }
 </style>
 </head>
 
 <body>
 
-<div class="stars" id="stars"></div>
+<h1>Tú mi 14 de febrero &lt;3</h1>
 
-<div class="texto">
-💗 Tú mi 14 de febrero &lt;3 💗 <br><br>
-Eres mi universo favorito,  
-la estrella que ilumina cada día ✨
+<div class="center">
+  <div class="heart">
+    <!-- IMAGEN GACHA -->
+    <img src="gacha.jpg">
+  </div>
 </div>
 
-<button class="musicBtn" onclick="playMusic()">Tocar música 💕</button>
-
-<div class="heart">
-<img src="gacha.jpg">
+<div class="orbit">
+  <!-- TUS 7 FOTOS -->
+  <img class="photo" src="foto1.jpg">
+  <img class="photo" src="foto2.jpg">
+  <img class="photo" src="foto3.jpg">
+  <img class="photo" src="foto4.jpg">
+  <img class="photo" src="foto5.jpg">
+  <img class="photo" src="foto6.jpg">
+  <img class="photo" src="foto7.jpg">
 </div>
 
-<div class="orbita">
-<img src="foto1.jpg" class="p1">
-<img src="foto2.jpg" class="p2">
-<img src="foto3.jpg" class="p3">
-<img src="foto4.jpg" class="p4">
-<img src="foto5.jpg" class="p5">
-<img src="foto6.jpg" class="p6">
-<img src="foto7.jpg" class="p7">
+<button id="btn" onclick="mostrar()">Mensaje sorpresa 💌</button>
+
+<div id="mensaje">
+Hola mi niña, sé que éste día es muy especial para nosotros aparte nuestra fecha obviooo.  
+Te amo demasiado mi vida, aunque estemos peleados ahora, yo siempre te estoy amando, estoy pensando en tí al hacer esto, me cuesta entenderlo por ratos, pero ya voy aprendiendo, es como hackear dx, oyeteamo bésame, mi muñequita hermosa, que más puedo decirte, tu sabes que eres mi todo, tenemos muchos problemas, quisiera solucionar todo de verdad, sé que no podré hacerlo completamente pero intentaré hacer lo que esté en mis manos para ayudarnos, te adoro mi niña y te extraño ahorita mismo, no sabes lo triste que estoy sin tí, te quiero mucho gracias por aparecer en mi vida, siempre siempre vas a ser la dueña de mi corazón.  
+Y querida por favor, trata de calmarte cuando sientas que llorarás, no me gusta escucharte así mi preciosa, teamo eres mi diamante hermoso, eres el mejor san Valentín que puedo tener, teadoro mi reina, besos besos 😘
 </div>
 
-<div class="viewer" id="viewer">
-<img id="viewerImg">
-</div>
-
-<audio id="music" loop>
-<source src="musica.mp3" type="audio/mpeg">
+<!-- MÚSICA -->
+<audio autoplay loop>
+  <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-/* REPRODUCIR MÚSICA */
-function playMusic(){
-document.getElementById("music").play();
-}
-
-/* VISOR */
-const viewer=document.getElementById("viewer");
-const viewerImg=document.getElementById("viewerImg");
-
-document.querySelectorAll(".orbita img").forEach(img=>{
-img.addEventListener("click",()=>{
-viewer.style.display="flex";
-viewerImg.src=img.src;
-});
-});
-viewer.addEventListener("click",()=>viewer.style.display="none");
-
-/* ESTRELLAS */
-const stars=document.getElementById("stars");
-for(let i=0;i<150;i++){
-let s=document.createElement("div");
-s.className="star";
-s.style.top=Math.random()*100+"vh";
-s.style.left=Math.random()*100+"vw";
-s.style.animationDelay=Math.random()*2+"s";
-stars.appendChild(s);
+function mostrar(){
+  document.getElementById("mensaje").style.display="flex";
 }
 </script>
 
