@@ -5,177 +5,230 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tú mi 14 de febrero</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
+
 body{
-  margin:0;
-  overflow:hidden;
-  background: radial-gradient(circle at center, #0b0b1a 0%, #000 70%);
-  font-family:'Quicksand', sans-serif;
-  color:#fff;
-  text-align:center;
+background:radial-gradient(circle at bottom,#02020a,#000);
+font-family:'Nunito',sans-serif;
+overflow:hidden;
+color:white;
+text-align:center;
 }
 
-/* título */
-h1{
-  position:absolute;
-  top:20px;
-  width:100%;
-  font-size:24px;
-  color:#ffd1ec;
-  text-shadow:0 0 10px #ff7ac8;
+/* TEXTO PRINCIPAL */
+.titulo{
+position:absolute;
+top:20px;
+width:100%;
+padding:0 20px;
+font-family:'Pacifico',cursive;
+font-size:22px;
+color:#ffd1f0;
+text-shadow:0 0 12px rgba(255,182,193,.6);
+z-index:3;
 }
 
-/* contenedor central */
-.center{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
+/* CONTENEDOR CENTRAL */
+.scene{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:min(90vw,420px);
+height:min(90vw,420px);
 }
 
-/* corazón */
+/* CORAZÓN */
 .heart{
-  width:220px;
-  height:200px;
-  position:relative;
-  transform:rotate(-45deg);
-  background:#ff4da6;
-  box-shadow:0 0 40px #ff4da6;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:65%;
+aspect-ratio:1;
+background:radial-gradient(circle,#ff8fc7,#ff4fa3);
+clip-path:path("M135 240 C25 155 5 85 70 45 C105 25 135 45 135 75 C135 45 165 25 200 45 C265 85 245 155 135 240 Z");
+box-shadow:0 0 50px rgba(255,105,180,.9);
+animation:latido 1.6s infinite;
+overflow:hidden;
 }
 
-.heart:before,
-.heart:after{
-  content:"";
-  position:absolute;
-  width:220px;
-  height:200px;
-  background:#ff4da6;
-  border-radius:50%;
-}
-
-.heart:before{ top:-110px; left:0; }
-.heart:after{ left:110px; top:0; }
-
-/* imagen dentro del corazón */
 .heart img{
-  position:absolute;
-  width:150px;
-  height:150px;
-  object-fit:cover;
-  border-radius:50%;
-  top:25px;
-  left:35px;
-  transform:rotate(45deg);
-  filter:brightness(1.1) contrast(1.1);
+width:100%;
+height:100%;
+object-fit:cover;
+mix-blend-mode:screen;
+opacity:.9;
 }
 
-/* órbitas */
+@keyframes latido{
+0%,100%{transform:translate(-50%,-50%) scale(1);}
+50%{transform:translate(-50%,-50%) scale(1.08);}
+}
+
+/* ÓRBITA */
 .orbit{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform-style:preserve-3d;
+position:absolute;
+inset:0;
+animation:spin 30s linear infinite;
 }
 
-.photo{
-  position:absolute;
-  width:90px;
-  height:90px;
-  border-radius:15px;
-  object-fit:cover;
-  box-shadow:0 0 15px #ff7ac8;
-}
-
-/* animaciones */
 @keyframes spin{
-  from{ transform:rotate(0deg) translateX(260px) rotate(0deg); }
-  to{ transform:rotate(360deg) translateX(260px) rotate(-360deg); }
+to{transform:rotate(360deg);}
 }
 
-.orbit img:nth-child(1){ animation:spin 20s linear infinite; }
-.orbit img:nth-child(2){ animation:spin 25s linear infinite reverse; }
-.orbit img:nth-child(3){ animation:spin 30s linear infinite; }
-.orbit img:nth-child(4){ animation:spin 35s linear infinite reverse; }
-.orbit img:nth-child(5){ animation:spin 40s linear infinite; }
-.orbit img:nth-child(6){ animation:spin 45s linear infinite reverse; }
-.orbit img:nth-child(7){ animation:spin 50s linear infinite; }
-
-/* botón mensaje */
-#btn{
-  position:absolute;
-  bottom:40px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#ff7ac8;
-  border:none;
-  padding:12px 22px;
-  border-radius:25px;
-  color:white;
-  font-size:16px;
-  box-shadow:0 0 15px #ff7ac8;
+/* FOTOS */
+.photo{
+position:absolute;
+width:70px;
+height:70px;
+border-radius:14px;
+object-fit:cover;
+box-shadow:0 0 15px rgba(255,182,193,.4);
+cursor:pointer;
 }
 
-/* mensaje secreto */
-#mensaje{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,0.85);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:30px;
-  font-size:16px;
-  line-height:1.5;
-  animation:fadeIn 1s ease;
+/* POSICIONES SIMÉTRICAS */
+.p1{top:-10px; left:50%; transform:translateX(-50%);}
+.p2{top:20%; right:-10px;}
+.p3{bottom:20%; right:-10px;}
+.p4{bottom:-10px; left:50%; transform:translateX(-50%);}
+.p5{bottom:20%; left:-10px;}
+.p6{top:20%; left:-10px;}
+.p7{top:50%; right:-25px; transform:translateY(-50%);}
+
+/* VISOR */
+.viewer{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.92);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:10;
 }
 
-@keyframes fadeIn{
-  from{opacity:0; transform:scale(.9);}
-  to{opacity:1; transform:scale(1);}
+.viewer img{
+max-width:90%;
+max-height:80%;
+border-radius:20px;
+box-shadow:0 0 25px rgba(255,182,193,.6);
+}
+
+/* MENSAJE SECRETO */
+.secret{
+position:fixed;
+bottom:-100%;
+left:0;
+width:100%;
+background:rgba(10,10,20,.95);
+padding:30px;
+font-size:16px;
+line-height:1.7;
+transition:.8s;
+overflow:auto;
+max-height:80%;
+}
+
+.secret.show{
+bottom:0;
+}
+
+.btn-secret{
+position:absolute;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:#ff4fa3;
+border:none;
+padding:12px 20px;
+border-radius:20px;
+color:white;
+font-size:14px;
+cursor:pointer;
+box-shadow:0 0 15px rgba(255,105,180,.7);
+}
+
+/* BOTÓN MÚSICA */
+.music-btn{
+position:absolute;
+top:20px;
+right:20px;
+background:#ff4fa3;
+border:none;
+padding:10px 14px;
+border-radius:20px;
+color:white;
+font-size:12px;
+cursor:pointer;
+z-index:4;
 }
 </style>
 </head>
 
 <body>
 
-<h1>Tú mi 14 de febrero &lt;3</h1>
+<div class="titulo">💗 Tú mi 14 de febrero &lt;3 💗</div>
 
-<div class="center">
-  <div class="heart">
-    <!-- IMAGEN GACHA -->
-    <img src="gacha.jpg">
-  </div>
+<button class="music-btn" onclick="toggleMusic()">🎵 Música</button>
+
+<div class="scene">
+
+<div class="heart">
+<img src="gacha.jpg">
 </div>
 
 <div class="orbit">
-  <!-- TUS 7 FOTOS -->
-  <img class="photo" src="foto1.jpg">
-  <img class="photo" src="foto2.jpg">
-  <img class="photo" src="foto3.jpg">
-  <img class="photo" src="foto4.jpg">
-  <img class="photo" src="foto5.jpg">
-  <img class="photo" src="foto6.jpg">
-  <img class="photo" src="foto7.jpg">
+<img src="foto1.jpg" class="photo p1">
+<img src="foto2.jpg" class="photo p2">
+<img src="foto3.jpg" class="photo p3">
+<img src="foto4.jpg" class="photo p4">
+<img src="foto5.jpg" class="photo p5">
+<img src="foto6.jpg" class="photo p6">
+<img src="foto7.jpg" class="photo p7">
 </div>
 
-<button id="btn" onclick="mostrar()">Mensaje sorpresa 💌</button>
-
-<div id="mensaje">
-Hola mi niña, sé que éste día es muy especial para nosotros aparte nuestra fecha obviooo.  
-Te amo demasiado mi vida, aunque estemos peleados ahora, yo siempre te estoy amando, estoy pensando en tí al hacer esto, me cuesta entenderlo por ratos, pero ya voy aprendiendo, es como hackear dx, oyeteamo bésame, mi muñequita hermosa, que más puedo decirte, tu sabes que eres mi todo, tenemos muchos problemas, quisiera solucionar todo de verdad, sé que no podré hacerlo completamente pero intentaré hacer lo que esté en mis manos para ayudarnos, te adoro mi niña y te extraño ahorita mismo, no sabes lo triste que estoy sin tí, te quiero mucho gracias por aparecer en mi vida, siempre siempre vas a ser la dueña de mi corazón.  
-Y querida por favor, trata de calmarte cuando sientas que llorarás, no me gusta escucharte así mi preciosa, teamo eres mi diamante hermoso, eres el mejor san Valentín que puedo tener, teadoro mi reina, besos besos 😘
 </div>
 
-<!-- MÚSICA -->
-<audio autoplay loop>
-  <source src="musica.mp3" type="audio/mpeg">
+<button class="btn-secret" onclick="showSecret()">Mensaje secreto 💌</button>
+
+<div class="viewer" id="viewer">
+<img id="viewerImg">
+</div>
+
+<div class="secret" id="secret">
+Hola mi niña, sé que éste día es muy especial para nosotros aparte nuestra fecha obviooo...
+</div>
+
+<audio id="music" loop>
+<source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-function mostrar(){
-  document.getElementById("mensaje").style.display="flex";
+/* VISOR */
+const viewer=document.getElementById("viewer");
+const viewerImg=document.getElementById("viewerImg");
+document.querySelectorAll(".photo").forEach(img=>{
+img.onclick=()=>{
+viewer.style.display="flex";
+viewerImg.src=img.src;
+}
+});
+viewer.onclick=()=>viewer.style.display="none";
+
+/* MENSAJE */
+function showSecret(){
+document.getElementById("secret").classList.toggle("show");
+}
+
+/* MÚSICA */
+const music=document.getElementById("music");
+function toggleMusic(){
+if(music.paused){music.play();}
+else{music.pause();}
 }
 </script>
 
