@@ -13,10 +13,10 @@
 /* 🌌 FONDO ESPACIO */
 body{
 font-family:'Nunito',sans-serif;
-overflow:hidden;
-color:white;
-text-align:center;
 background:#000;
+color:white;
+overflow:hidden;
+text-align:center;
 }
 
 body::before{
@@ -29,39 +29,39 @@ radial-gradient(1.5px 1.5px at 70% 80%, #fff, transparent),
 radial-gradient(2px 2px at 40% 70%, #fff, transparent),
 radial-gradient(1.5px 1.5px at 80% 20%, #fff, transparent),
 radial-gradient(2px 2px at 10% 90%, #fff, transparent);
-opacity:.6;
-animation:stars 60s linear infinite;
+opacity:.7;
+animation:stars 70s linear infinite;
 z-index:-1;
 }
 
 @keyframes stars{
 from{transform:translateY(0);}
-to{transform:translateY(-200px);}
+to{transform:translateY(-300px);}
 }
 
 /* TITULO */
 .titulo{
 position:absolute;
-top:20px;
+top:18px;
 width:100%;
 font-family:'Pacifico',cursive;
-font-size:22px;
+font-size:clamp(18px,5vw,24px);
 color:#ffd1f0;
 text-shadow:0 0 12px rgba(255,182,193,.7);
 z-index:3;
 }
 
-/* SCENE */
+/* CONTENEDOR */
 .scene{
 position:absolute;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
-width:min(90vw,420px);
-height:min(90vw,420px);
+width:min(92vw,420px);
+height:min(92vw,420px);
 }
 
-/* CORAZÓN */
+/* ❤️ CORAZÓN */
 .heart{
 position:absolute;
 top:50%;
@@ -81,7 +81,7 @@ width:100%;
 height:100%;
 object-fit:cover;
 mix-blend-mode:screen;
-opacity:.9;
+opacity:.95;
 }
 
 @keyframes latido{
@@ -89,7 +89,7 @@ opacity:.9;
 50%{transform:translate(-50%,-50%) scale(1.08);}
 }
 
-/* ORBITA */
+/* ÓRBITA */
 .orbit{
 position:absolute;
 inset:0;
@@ -103,21 +103,22 @@ to{transform:rotate(360deg);}
 /* FOTOS */
 .photo{
 position:absolute;
-width:70px;
-height:70px;
-border-radius:14px;
+width:clamp(55px,16vw,75px);
+height:clamp(55px,16vw,75px);
+border-radius:16px;
 object-fit:cover;
-box-shadow:0 0 15px rgba(255,182,193,.4);
+box-shadow:0 0 18px rgba(255,182,193,.45);
 cursor:pointer;
 }
 
+/* POSICIONES */
 .p1{top:-10px; left:50%; transform:translateX(-50%);}
-.p2{top:20%; right:-10px;}
-.p3{bottom:20%; right:-10px;}
+.p2{top:20%; right:-12px;}
+.p3{bottom:20%; right:-12px;}
 .p4{bottom:-10px; left:50%; transform:translateX(-50%);}
-.p5{bottom:20%; left:-10px;}
-.p6{top:20%; left:-10px;}
-.p7{top:50%; right:-25px; transform:translateY(-50%);}
+.p5{bottom:20%; left:-12px;}
+.p6{top:20%; left:-12px;}
+.p7{top:50%; right:-28px; transform:translateY(-50%);}
 
 /* VISOR */
 .viewer{
@@ -128,47 +129,51 @@ display:none;
 justify-content:center;
 align-items:center;
 z-index:10;
+padding:20px;
 }
 
 .viewer img{
-max-width:90%;
-max-height:80%;
+max-width:100%;
+max-height:80vh;
 border-radius:20px;
 box-shadow:0 0 25px rgba(255,182,193,.6);
 }
 
-/* 💌 MENSAJE SECRETO DECORADO */
+/* 💌 MENSAJE */
 .secret{
 position:fixed;
 bottom:-100%;
 left:0;
 width:100%;
 background:linear-gradient(180deg,#0b0b18,#05050d);
-padding:35px 25px;
+padding:28px 22px 34px;
 transition:.8s;
 overflow:auto;
-max-height:80%;
+max-height:82%;
 border-top:2px solid rgba(255,182,193,.4);
 box-shadow:0 -10px 30px rgba(255,105,180,.25);
 font-family:'Dancing Script',cursive;
-font-size:20px;
-line-height:1.7;
+font-size:clamp(17px,4.6vw,20px);
+line-height:1.8;
 color:#ffd6ec;
-}
-
-.secret::before{
-content:"💗 💕 💗";
-display:block;
-margin-bottom:10px;
-font-size:22px;
-opacity:.7;
+text-align:left;
 }
 
 .secret.show{bottom:0;}
 
+.secret::before{
+content:"💗 💕 💗";
+display:block;
+text-align:center;
+margin-bottom:12px;
+font-size:22px;
+opacity:.8;
+}
+
+/* BOTONES */
 .btn-secret{
 position:absolute;
-bottom:20px;
+bottom:22px;
 left:50%;
 transform:translateX(-50%);
 background:#ff4fa3;
@@ -181,11 +186,10 @@ cursor:pointer;
 box-shadow:0 0 15px rgba(255,105,180,.7);
 }
 
-/* BOTON MUSICA */
 .music-btn{
 position:absolute;
-top:20px;
-right:20px;
+top:18px;
+right:18px;
 background:#ff4fa3;
 border:none;
 padding:10px 14px;
@@ -228,7 +232,10 @@ z-index:4;
 </div>
 
 <div class="secret" id="secret">
-Hola mi niña, sé que éste día es muy especial para nosotros aparte nuestra fecha obviooo...
+Hola mi niña, sé que éste día es muy especial para nosotros aparte nuestra fecha obviooo.  
+Te amo demasiado mi vida, aunque estemos peleados ahora, yo siempre te estoy amando, estoy pensando en tí al hacer esto, me cuesta entenderlo por ratos, pero ya voy aprendiendo, es como hackear dx, oyeteamo bésame, mi muñequita hermosa, que más puedo decirte, tu sabes que eres mi todo, tenemos muchos problemas, quisiera solucionar todo de verdad, sé que no podré hacerlo completamente pero intentaré hacer lo que esté en mis manos para ayudarnos, te adoro mi niña y te extraño ahorita mismo, no sabes lo triste que estoy sin tí, te quiero mucho gracias por aparecer en mi vida, siempre siempre vas a ser la dueña de mi corazón.  
+
+Y querida por favor, trata de calmarte cuando sientas que llorarás, no me gusta escucharte así mi preciosa, teamo eres mi diamante hermoso, eres el mejor san Valentín que puedo tener, teadoro mi reina, besos besos 😘
 </div>
 
 <audio id="music" loop>
@@ -238,12 +245,14 @@ Hola mi niña, sé que éste día es muy especial para nosotros aparte nuestra f
 <script>
 const viewer=document.getElementById("viewer");
 const viewerImg=document.getElementById("viewerImg");
+
 document.querySelectorAll(".photo").forEach(img=>{
 img.onclick=()=>{
 viewer.style.display="flex";
 viewerImg.src=img.src;
 }
 });
+
 viewer.onclick=()=>viewer.style.display="none";
 
 function showSecret(){
